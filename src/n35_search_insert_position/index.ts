@@ -1,6 +1,6 @@
-/// https://leetcode-cn.com/problems/binary-search/
+/// https://leetcode-cn.com/problems/search-insert-position/
 
-function search(nums: number[], target: number): number {
+function searchInsert(nums: number[], target: number): number {
   let left = 0;
   let right = nums.length - 1;
   while (left <= right) {
@@ -14,7 +14,7 @@ function search(nums: number[], target: number): number {
       right = pivot - 1;
     }
   }
-  return -1;
+  return left;
 }
 
-export { search };
+export { searchInsert };
