@@ -5,6 +5,7 @@
   "license": "MIT",
   "repository": "https://github.com/funn1est/leetcode-ts.git",
   "scripts": {
+    "gen": "deno run --allow-net --allow-write scripts/cli.ts",
     "test": "jest"
   },
   "devDependencies": {
