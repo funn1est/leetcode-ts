@@ -88,11 +88,14 @@ const QUESTION_EXEC = /leetcode(-cn)?\.com\/problems\/([^/]*)/;
 const genCode = (name: string, code: string) => `/// https://leetcode.com/problems/${name}
 
 ${code}
+
+export {};
 `;
 
 const genTest = (fileName: string) => `import {} from './index';
 
 it('test ${fileName}', () => {
+  expect().toStrictEqual();
 });
 `;
 
