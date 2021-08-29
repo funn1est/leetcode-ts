@@ -15,6 +15,7 @@ module.exports = {
       },
     ],
     'import/no-unresolved': 0,
+    'lines-between-class-members': 0,
   },
   overrides: [
     {
