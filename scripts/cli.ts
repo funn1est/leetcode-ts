@@ -1,4 +1,4 @@
-const BASE_URL = 'https://leetcode.com/graphql';
+const BASE_URL = 'https://leetcode-cn.com/graphql';
 
 const GET_QUESTION_KEY = 'GetQuestion';
 const GET_QUESTION_QUERY = `query ${GET_QUESTION_KEY}($titleSlug: String!) {
@@ -158,7 +158,10 @@ const main = async () => {
     query: GET_QUESTION_QUERY,
   });
   const codes = JSON.parse(question.codeDefinition) as unknown as CodeDefinition[];
-  const fileName = `n${question.questionFrontendId}_${question.titleSlug.replace(/-/g, '_')}`;
+  const uid = /^\d+$/.test(question.questionFrontendId)
+    ? question.questionFrontendId
+    : question.questionId;
+  const fileName = `n${uid}_${question.titleSlug.replace(/-/g, '_')}`;
   const tsCode = codes.find(({ value }) => value === 'typescript');
   if (!tsCode) {
     return;
