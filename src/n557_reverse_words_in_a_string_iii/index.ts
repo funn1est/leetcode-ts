@@ -1,4 +1,4 @@
-/// https://leetcode.com/problems/reverse-words-in-a-string-iii
+/// https://leetcode-cn.com/problems/reverse-words-in-a-string-iii
 
 function reverseWords(s: string): string {
   let left = 0;

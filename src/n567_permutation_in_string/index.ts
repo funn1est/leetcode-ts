@@ -1,4 +1,4 @@
-/// https://leetcode.com/problems/permutation-in-string
+/// https://leetcode-cn.com/problems/permutation-in-string
 
 function checkInclusion(s1: string, s2: string): boolean {
   // 窗口大小

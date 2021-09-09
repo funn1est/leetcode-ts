@@ -85,7 +85,7 @@ interface ProblemData {
 
 const QUESTION_EXEC = /leetcode(-cn)?\.com\/problems\/([^/]*)/;
 
-const genCode = (name: string, code: string) => `/// https://leetcode.com/problems/${name}
+const genCode = (name: string, code: string) => `/// https://leetcode-cn.com/problems/${name}
 
 ${code}
 

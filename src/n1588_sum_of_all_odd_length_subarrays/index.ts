@@ -1,4 +1,4 @@
-/// https://leetcode.com/problems/sum-of-all-odd-length-subarrays
+/// https://leetcode-cn.com/problems/sum-of-all-odd-length-subarrays
 
 function sumOddLengthSubarrays(arr: number[]): number {
   const sum = [arr[0]];

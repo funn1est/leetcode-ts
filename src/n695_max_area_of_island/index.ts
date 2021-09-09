@@ -1,4 +1,4 @@
-/// https://leetcode.com/problems/max-area-of-island
+/// https://leetcode-cn.com/problems/max-area-of-island
 
 function maxAreaOfIsland(grid: number[][]): number {
   const visited: Record<string, boolean> = {};

@@ -1,4 +1,4 @@
-/// https://leetcode.com/problems/flood-fill
+/// https://leetcode-cn.com/problems/flood-fill
 
 function floodFill(image: number[][], sr: number, sc: number, newColor: number): number[][] {
   const visited: Record<string, boolean> = {};

@@ -1,4 +1,4 @@
-/// https://leetcode.com/problems/ti-huan-kong-ge-lcof
+/// https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof
 
 function replaceSpace(s: string): string {
   const xs = s.split('');
