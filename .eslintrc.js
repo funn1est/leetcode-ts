@@ -1,7 +1,12 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
-  extends: ['eslint:recommended', 'airbnb-base', 'plugin:prettier/recommended'],
+  extends: [
+    'eslint:recommended',
+    'airbnb-base',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   rules: {
     'import/prefer-default-export': 0,
     'import/extensions': [
