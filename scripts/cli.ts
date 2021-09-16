@@ -162,17 +162,19 @@ const main = async () => {
     ? question.questionFrontendId
     : question.questionId;
   const fileName = `n${uid}_${question.titleSlug.replace(/-/g, '_')}`;
-  const tsCode = codes.find(({ value }) => value === 'typescript');
-  if (!tsCode) {
-    return;
+  let code = codes.find(({ value }) => value === 'typescript');
+  if (!code) {
+    // refactor
+    code = codes.find(({ value }) => value === 'javascript');
+    if (!code) {
+      return;
+    }
   }
 
   await Deno.mkdir(`./src/${fileName}`, { recursive: true });
-  Deno.writeTextFile(
-    `./src/${fileName}/index.ts`,
-    genCode(question.titleSlug, tsCode.defaultCode),
-    { create: true },
-  );
+  Deno.writeTextFile(`./src/${fileName}/index.ts`, genCode(question.titleSlug, code.defaultCode), {
+    create: true,
+  });
   Deno.writeTextFile(`./src/${fileName}/test.ts`, genTest(fileName), { create: true });
   console.log(`gen ${fileName} successfully`);
 };
