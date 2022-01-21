@@ -22,6 +22,7 @@ module.exports = {
     'import/no-unresolved': 0,
     'no-restricted-syntax': 0,
     'lines-between-class-members': 0,
+    'max-classes-per-file': 0,
   },
   overrides: [
     {
