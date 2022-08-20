@@ -3,9 +3,14 @@
     "incremental": true,
     "target": "ESNext",
     "module": "ESNext",
+    "moduleResolution": "Node",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
+  },
+  "ts-node": {
+    "esm": true,
+    "swc": true
   }
 }

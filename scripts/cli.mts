@@ -1,4 +1,9 @@
-const BASE_URL = 'https://leetcode-cn.com/graphql';
+import process from 'node:process';
+import fs from 'fs-extra';
+import got from 'got';
+
+const BASE_URL = 'https://leetcode.com/graphql';
+// const BASE_URL = 'https://leetcode-cn.com/graphql';
 
 const GET_QUESTION_KEY = 'GetQuestion';
 const GET_QUESTION_QUERY = `query ${GET_QUESTION_KEY}($titleSlug: String!) {
@@ -105,20 +110,19 @@ interface Query {
   query: string;
 }
 
-const gql = <T>(query: Query) =>
-  fetch(BASE_URL, {
+const gql = <T extends unknown>(query: Query) =>
+  got(BASE_URL, {
     body: JSON.stringify(query),
     method: 'POST',
-    headers: new Headers({
+    headers: {
       'Content-Type': 'application/json',
-    }),
-    credentials: 'include',
+    },
   })
-    .then((data) => data.json() as unknown as Resp<T>)
+    .json<Resp<T>>()
     .then(({ data }) => data);
 
 const main = async () => {
-  const [input] = Deno.args;
+  const [input] = process.argv.slice(2);
   let questionName = '';
   if (/^[0-9]+$/.test(input)) {
     // number
@@ -171,11 +175,9 @@ const main = async () => {
     }
   }
 
-  await Deno.mkdir(`./src/${fileName}`, { recursive: true });
-  Deno.writeTextFile(`./src/${fileName}/index.ts`, genCode(question.titleSlug, code.defaultCode), {
-    create: true,
-  });
-  Deno.writeTextFile(`./src/${fileName}/test.ts`, genTest(fileName), { create: true });
+  await fs.mkdir(`./src/${fileName}`, { recursive: true });
+  await fs.writeFile(`./src/${fileName}/index.ts`, genCode(question.titleSlug, code.defaultCode));
+  await fs.writeFile(`./src/${fileName}/test.ts`, genTest(fileName));
   console.log(`gen ${fileName} successfully`);
 };
 
